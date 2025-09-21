@@ -119,6 +119,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formStatus = document.querySelector("[data-form-status]");
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
@@ -131,6 +132,36 @@ for (let i = 0; i < formInputs.length; i++) {
       formBtn.setAttribute("disabled", "");
     }
 
+  });
+}
+
+
+// basic mailto submission (no backend)
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = form.querySelector('input[name="fullname"]').value.trim();
+    const email = form.querySelector('input[name="email"]').value.trim();
+    const message = form.querySelector('textarea[name="message"]').value.trim();
+
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+    // Update status
+    if (formStatus) {
+      formStatus.textContent = "Opening your email client…";
+    }
+
+    // Open default mail client
+    window.location.href = `mailto:sairajnagargoje567@gmail.com?subject=${subject}&body=${body}`;
+
+    // Optionally reset after a short delay
+    setTimeout(() => {
+      form.reset();
+      formBtn.setAttribute("disabled", "");
+      if (formStatus) formStatus.textContent = "";
+    }, 800);
   });
 }
 
