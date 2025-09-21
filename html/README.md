@@ -1,43 +1,55 @@
-# vCard - Personal portfolio
+# Sairaj Nagargoje — Personal Portfolio
 
-![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/vcard-personal-portfolio)
-![GitHub stars](https://img.shields.io/github/stars/codewithsadee/vcard-personal-portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/codewithsadee/vcard-personal-portfolio?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-[![YouTube Video Views](https://img.shields.io/youtube/views/SoxmIlgf2zM?style=social)](https://youtu.be/SoxmIlgf2zM)
+A clean, responsive personal portfolio built with HTML, CSS, and JavaScript. This site showcases projects, skills, and experience, and can be easily customized.
 
-vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
+## Structure
 
-## Demo
+The main site is in this folder. Key paths:
 
-![vCard Desktop Demo](./website-demo-image/desktop.png "Desktop Demo")
-![vCard Mobile Demo](./website-demo-image/mobile.png "Mobile Demo")
+- `index.html` — main page markup
+- `assets/css/style.css` — styles
+- `assets/js/script.js` — interactions (navigation, filters, modal)
+- `assets/images/` — images and icons
 
-## Prerequisites
+## Run locally
 
-Before you begin, ensure you have met the following requirements:
+You can open `index.html` directly in a browser. For a smoother experience (routing, assets), serve it with a simple local server.
 
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+Windows PowerShell (Python):
 
-## Installing vCard
-
-To install **vCard**, follow these steps:
-
-Linux and macOS:
-
-```bash
-sudo git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
+```powershell
+# In the html folder
+python -m http.server 5500
+# Then open http://localhost:5500/
 ```
 
-Windows:
+Node (if installed):
 
-```bash
-git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
+```powershell
+# In the html folder
+npx serve . -l 5500
+# Then open http://localhost:5500/
 ```
 
-## Contact
+## Customize
 
-If you want to contact me you can reach me at [Twitter](https://www.x.com/codewithsadee_).
+- Name, title, and About: edit in `index.html` (About section). Replace the TODO note with your specific focus areas (e.g., full‑stack, cloud, IoT, blockchain).
+- Contact info: update email, phone, birthday, and location in the sidebar.
+- Social links: replace the LinkedIn/GitHub/Twitter `href` values.
+- Projects: update the Portfolio section cards and images in `assets/images/`.
+- Skills: adjust names and percentages in the Resume → My skills list.
+
+## Deploy
+
+This is a static site; you can host it on any static hosting provider:
+
+- GitHub Pages: push the `html/` contents to a repo and enable Pages.
+- Netlify/Vercel: drag‑and‑drop the `html/` folder or connect your repo; publish the `html` directory.
+- Any static file server: upload the folder as-is.
+
+## Credits
+
+Originally inspired by the vCard portfolio template by CodeWithSadee. Customized for Sairaj Nagargoje.
 
 ## License
 
