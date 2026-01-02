@@ -17,17 +17,26 @@ jobs:
           key: ${{ secrets.OCI_SSH_KEY }}
           script: |
              set -e
-                    
+
              # Clone/update repo in a SAFE location
              cd /var/www/repo
-                    
+
              if [ ! -d html ]; then
                git clone https://github.com/Sairaj567/html.git
              else
                cd html && git pull origin master
                cd ..
              fi
-                    
+
+             # Validate HTML files exist
+             if [ ! -f /var/www/repo/html/html/index.html ]; then
+               echo "Error: index.html not found!"
+               exit 1
+             fi
+             
              # Deploy site files to web root
              rsync -av --delete /var/www/repo/html/html/ /var/www/html/
-                    
+             
+             # Test nginx configuration and reload if valid
+             sudo nginx -t && sudo systemctl reload nginx || echo "Nginx reload skipped"
+
