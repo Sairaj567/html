@@ -16,11 +16,19 @@ jobs:
           username: ${{ secrets.OCI_USER }}
           key: ${{ secrets.OCI_SSH_KEY }}
           script: |
-            cd /var/www
-            if [ ! -d html ]; then
-              git clone https://github.com/Sairaj567/html.git
-            else
-              cd html && git pull origin master
-            fi
+              cd /var/www
+                    
+              # Mark directory as safe for git
+              git config --global --add safe.directory /var/www/html
+                    
+              # Clone or update repo
+              if [ ! -d html ]; then
+                git clone https://github.com/Sairaj567/html.git
+              else
+                cd html && git pull origin master
+                cd ..
+              fi
+                    
+              # Sync site files correctly
+              rsync -av --delete html/html/ /var/www/html/
 
-            sudo rsync -av --delete html/html/ /var/www/html/
