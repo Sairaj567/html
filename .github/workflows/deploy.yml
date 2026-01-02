@@ -2,7 +2,7 @@ name: Deploy Resume (Docker + Traefik)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   deploy:
@@ -16,5 +16,11 @@ jobs:
           username: ${{ secrets.OCI_USER }}
           key: ${{ secrets.OCI_SSH_KEY }}
           script: |
-            cd /var/www/html
-            git pull origin main
+            cd /var/www
+            if [ ! -d html ]; then
+              git clone https://github.com/Sairaj567/html.git
+            else
+              cd html && git pull origin master
+            fi
+
+            sudo rsync -av --delete html/html/ /var/www/html/
