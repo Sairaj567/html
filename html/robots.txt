@@ -1,0 +1,10 @@
+# robots.txt for Sairaj Nagargoje Portfolio
+
+User-agent: *
+Allow: /
+
+# Disallow hidden files and directories
+Disallow: /.*
+
+# Sitemap location
+Sitemap: https://yoursite.com/sitemap.xml
