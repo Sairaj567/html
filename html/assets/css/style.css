@@ -953,6 +953,11 @@ main {
 
 .project-item > a { width: 100%; }
 
+.project-item > a:link,
+.project-item > a:visited {
+  color: inherit;
+}
+
 .project-img {
   position: relative;
   width: 100%;
